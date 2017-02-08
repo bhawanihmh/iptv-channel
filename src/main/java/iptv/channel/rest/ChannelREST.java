@@ -7,6 +7,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import iptv.channel.pojo.Channel;
 
@@ -41,10 +42,11 @@ public class ChannelREST {
 	
 	@GET
 	@Path("hi")
-    @Produces({"application/xml", "application/json"})
+    //@Produces({"application/xml", "application/json"})
+	@Produces({MediaType.TEXT_PLAIN})
     public String hi() {
 		LOGGER.info("ChannelREST.hi()");
-		return "Hello Bhawani !!!";
+		return "Hello World !!!";
 	}
 
 
