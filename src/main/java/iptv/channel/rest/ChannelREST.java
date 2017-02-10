@@ -33,11 +33,21 @@ public class ChannelREST {
 	}	
 	
 	@GET
-    @Path("{id}")
+    @Path("{id}/{flag}")
     @Produces({"application/json"})
-    public Channel find(@PathParam("id") String id) {	
-		LOGGER.info("ChannelREST.record() id = " + id);
-		return channels.get(id);
+    public Channel find(@PathParam("id") String id,@PathParam("flag") boolean flag) {	
+		LOGGER.info("Channel id = " + id);
+		LOGGER.info("Channel flag = " + flag);
+		if(flag) {
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		Channel channel = channels.get(id);
+		channel.setFallBack(false);
+		return channel;
 	}
 	
 	@GET
@@ -46,7 +56,7 @@ public class ChannelREST {
 	@Produces({MediaType.TEXT_PLAIN})
     public String hi() {
 		LOGGER.info("ChannelREST.hi()");
-		return "Hello World !!!";
+		return "Hello Bhawani !!!";
 	}
 
 
